@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import axios from "axios";
+import {useNavigate} from 'react-router-dom'
 
 const Create = () => {
-
     const [name,setName] = useState("")
     const [email,setEmail] = useState("")
-
+    const histry = useNavigate();
     const header = {authorization: "your token comes here",}
     const handelSubmit = ()=>{
         axios.post(
@@ -13,6 +13,7 @@ const Create = () => {
             {name:name,email:email},
             header
         )
+        histry("/read")
     }
     return (
         <form>
